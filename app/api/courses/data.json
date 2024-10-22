@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "skill": "Angular",
+    "description": "Angular is a platform that makes it easy to build applications with the web. Angular combines declarative templates, dependency injection, end to end tooling, and integrated best practices to solve development challenges. Angular empowers developers to build applications that live on the web, mobile, or the desktop",
+    "link": "https://angular.io/",
+    "logo": "https://angular.io/assets/images/logos/angular/angular.png"
+  },
+  {
+    "id": 2,
+    "skill": "React",
+    "description": "React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called components.",
+    "link": "https://reactjs.org/",
+    "logo": "https://reactjs.org/logo-og.png"
+  },
+  {
+    "id": 3,
+    "skill": "Vue",
+    "description": "Vue.js is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable.",
+    "link": "https://vuejs.org/",
+    "logo": "https://vuejs.org/images/logo.png"
+  },
+  {
+    "id": 4,
+    "skill": "Node",
+    "description": "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.",
+    "link": "https://nodejs.org/",
+    "logo": "https://nodejs.org/static/images/logo.svg"
+  },
+  {
+    "id": 5,
+    "skill": "Express",
+    "description": "Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.",
+    "link": "https://expressjs.com/",
+    "logo": "https://expressjs.com/images/express-facebook-share.png"
+  },
+  {
+    "id": 6,
+    "skill": "MongoDB",
+    "description": "MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era.",
+    "link": "https://www.mongodb.com/",
+    "logo": "https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png"
+  }
+]
