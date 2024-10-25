@@ -1,37 +1,13 @@
 import { NextResponse } from 'next/server';
 
-export async function POST(request: Request) {
-  const { code } = await request.json();
-
+export async function GET() {
   const clientId = process.env.YOUTUBE_CLIENT_ID;
-  const clientSecret = process.env.YOUTUBE_CLIENT_SECRET;
-
-  if (!clientSecret) {
-    throw new Error('YOUTUBE_CLIENT_SECRET is not defined');
-  }
-  if (!clientId) {
-    throw new Error('YOUTUBE_CLIENT_ID is not defined');
-  }
-  // TODO: Add redirectUri to .env when production is ready
   const redirectUri = 'http://localhost:3000/callback';
+  const scope = 'https://www.googleapis.com/auth/youtube.readonly';
+  const responseType = 'code';
+  const accessType = 'offline';
 
-  const response = await fetch('https://oauth2.googleapis.com/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      client_id: clientId,
-      client_secret: clientSecret,
-      code: code,
-      grant_type: 'authorization_code',
-      redirect_uri: redirectUri,
-    }),
-  });
+  const googleAuthUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=${responseType}&access_type=${accessType}`;
 
-  const data = await response.json();
-
-  if (response.ok) {
-    return NextResponse.json(data);
-  } else {
-    return NextResponse.json({ error: data }, { status: response.status });
-  }
+  return NextResponse.redirect(googleAuthUrl);
 }

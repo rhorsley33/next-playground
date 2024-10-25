@@ -10,7 +10,7 @@ const CallbackPage = () => {
 
     if (code) {
       const fetchAccessToken = async () => {
-        const response = await fetch('/api/auth/', {
+        const response = await fetch('/api/auth/token', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ code }),
@@ -19,7 +19,7 @@ const CallbackPage = () => {
 
         if (response.ok) {
           const accessToken = data.access_token;
-          sessionStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('accessToken', accessToken);
           router.push('/snacks');
         } else {
           console.error(`Error fetching access token: ${data.error}`);
@@ -31,7 +31,8 @@ const CallbackPage = () => {
 
   return (
     <div>
-      <h1>Deciding if you are allowed...</h1>
+      <h1>Callback Page</h1>
+      <p>Authorization code received: Check the console for the code.</p>
     </div>
   );
 };

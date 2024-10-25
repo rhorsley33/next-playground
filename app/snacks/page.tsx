@@ -1,47 +1,44 @@
 'use client';
 import { useEffect, useState } from 'react';
-
+import LoginButton from '../components/LoginButton';
+import VideoList from '../components/VideoList';
+import LoadingPage from '../loading';
 const SnacksPage = () => {
-  const [playlists, setPlaylists] = useState([]);
-
+  const [videos, setVideos] = useState([]);
+  const [authorized, setAuthorized] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const playlistId = 'PLtAD_PEdbrpN5Nd6B6f_vnckUJ_msDYB3';
   useEffect(() => {
-    const fetchSnacks = async () => {
-      const accessToken = sessionStorage.getItem('accessToken');
-      console.log(accessToken);
-      if (accessToken) {
-        const response = await fetch(
-          'https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true',
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Playlists:', data.items);
-          setPlaylists(data.items);
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+      setAuthorized(false);
+      setLoading(false);
+    } else {
+      const videoResponse = async (term: string | null) => {
+        const response = await fetch(`/api/videos?query=${term}`);
+        const data = await response.json();
+        console.log(`Video response: ${data}`);
+        if (response.ok && data.items) {
+          setVideos(data.items || []);
+          setAuthorized(true);
+          setLoading(false);
         } else {
           console.error('Error fetching playlists:', response.statusText);
         }
-      }
-    };
-
-    fetchSnacks();
+      };
+      videoResponse(accessToken);
+    }
   }, []);
 
+  if (!authorized) {
+    return <LoginButton />;
+  }
+
   return (
-    <div>
-      <h1>Your Playlists</h1>
-      <ul>
-        {playlists.map((playlist) => (
-          <li key={playlist.id}>
-            <h2>{playlist.snippet.title}</h2>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {loading && authorized && <LoadingPage />}
+      <VideoList videos={videos} />;
+    </>
   );
 };
 

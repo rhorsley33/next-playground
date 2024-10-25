@@ -1,4 +1,3 @@
-// app/api/auth/token/route.ts
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
@@ -29,7 +28,6 @@ export async function POST(request: Request) {
   });
 
   const data = await response.json();
-  console.log('Access token:', data.access_token);
   if (response.ok) {
     return NextResponse.json(data);
   } else {
