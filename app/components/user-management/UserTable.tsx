@@ -3,7 +3,8 @@ import styles from '@/app/styles/user-table.module.css';
 interface UserDataProps {
   users: {
     id: number;
-    name: string;
+    first_name: string;
+    last_name: string;
     email: string;
     age: number;
   }[];
@@ -15,7 +16,10 @@ const UserTable = ({ users }: UserDataProps) => {
         <thead className={`${styles['table-header']} bg-slate-900`}>
           <tr>
             <th className='border-b dark:border-slate-600 font-medium pl-8 text-slate-100 dark:text-slate-900 text-left'>
-              Name
+              First Name
+            </th>
+            <th className='border-b dark:border-slate-600 font-medium pl-8 text-slate-100 dark:text-slate-900 text-left'>
+              Last Name
             </th>
             <th className='border-b dark:border-slate-600 font-medium p-4 text-slate-100 dark:text-slate-900 text-left'>
               Email

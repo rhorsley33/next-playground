@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import LoginButton from '../components/LoginButton';
+import LoginButton from '../components/utility/LoginButton';
 import VideoList from '../components/VideoList';
 import LoadingPage from '../loading';
 const SnacksPage = () => {
