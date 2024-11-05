@@ -10,7 +10,7 @@
   width: 400px;
 }
 .container {
-  margin: 30px auto;
+  margin: 10px auto;
   width: 400px;
 }
 .income-expense-wrapper {
@@ -21,6 +21,16 @@
   justify-content: space-between;
   margin: 20px 0;
   width: 100%;
+}
+
+.headerOne {
+  font-size: 32px;
+}
+.headerTwo {
+  font-size: 26px;
+}
+.headerFour {
+  font-size: 22px;
 }
 
 .income-expense-wrapper > div {

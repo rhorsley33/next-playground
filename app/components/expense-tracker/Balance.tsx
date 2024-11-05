@@ -18,8 +18,8 @@ const Balance = () => {
 
   return (
     <div className={expenseStyles.container}>
-      <h2>Your Balance</h2>
-      <h4 id='balance'>{`$ ${amount}`}</h4>
+      <h2 className={expenseStyles.headerTwo}>Your Balance</h2>
+      <h4 className={expenseStyles.headerFour} id='balance'>{`$ ${amount}`}</h4>
     </div>
   );
 };
