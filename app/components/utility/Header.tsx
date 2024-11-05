@@ -18,6 +18,12 @@ const Header = () => {
               >
                 User Table
               </Link>
+              <Link
+                href='/projects/expense-tracker'
+                className='block px-2 sub-menu-link py-2'
+              >
+                Expense Tracker
+              </Link>
             </div>
           </div>
           <Link href='/code/repos'>My Git</Link>

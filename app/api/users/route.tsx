@@ -33,7 +33,6 @@ export async function GET(request: Request) {
 
   try {
     const users = await query(queryText, queryParams);
-    console.log('Users count:', users.length);
     const totalUsers = await query(`SELECT COUNT(*) FROM users`);
     const total = totalUsers;
     return NextResponse.json({ users, total });
