@@ -5,6 +5,7 @@ import UserActions from '@/app/components/user-management/UserActions';
 import Pagination from '@/app/components/utility/Pagination';
 import { useDebounce } from 'use-debounce';
 import SearchBar from '../utility/SearchBar';
+import LoadingPage from '@/app/loading';
 
 const UserTableContainer = () => {
   const [users, setUsers] = useState([]);
@@ -15,7 +16,7 @@ const UserTableContainer = () => {
   const [rightClick, setRightClick] = useState(10);
   const [query, setQuery] = useState('');
   const [debouncedQuery] = useDebounce(query, 500);
-  const limit = 10;
+  const limit = 9;
 
   const updateArrows = (offset: number) => {
     setLeftClick(offset - 10 < 0 ? 0 : offset - 10);
@@ -27,32 +28,42 @@ const UserTableContainer = () => {
   const fetchUsers = async (offset = 0, limit = 10, search = '') => {
     try {
       const searchParam = search ? `&search=${search}` : '';
-      const queryString = searchParam
-        ? `${process.env.NEXT_PUBLIC_BASE_URL}/api/users?limit=${limit}&offset=${offset}?${searchParam}`
-        : `${process.env.NEXT_PUBLIC_BASE_URL}/api/users?limit=${limit}&offset=${offset}`;
+      const queryString = `${process.env.NEXT_PUBLIC_BASE_URL}/api/users?limit=${limit}&offset=${offset}${searchParam}`;
       const response = await fetch(queryString);
       const data = await response.json();
-      const totalUsers = data.total[0].count;
-      setUsers(data.users);
-      setTotal(totalUsers);
-      setPages(Math.ceil(totalUsers / limit));
-      setCurrentPage(offset / limit + 1);
+
+      // Return the data so that it can be handled in the calling function
+      return data;
     } catch (error) {
       console.error('Error fetching users:', error);
     }
   };
 
   useEffect(() => {
-    if (debouncedQuery) {
-      fetchUsers(0, 10, debouncedQuery);
-    } else {
-      fetchUsers();
-    }
+    const loadData = async () => {
+      const data = await fetchUsers(0, limit, debouncedQuery);
+      if (data) {
+        const totalUsers = data.total;
+        setUsers(data.users);
+        setTotal(totalUsers);
+        setPages(Math.ceil(totalUsers / limit));
+        setCurrentPage(1); // Assuming you're loading the first page
+      }
+    };
+
+    loadData();
   }, [debouncedQuery]);
 
   const updateUsers = async (offset: number, limit: number) => {
-    updateArrows(offset);
-    const newUsers = await fetchUsers(offset, limit); // Waits for fetchUsers to complete and update state
+    updateArrows(offset); // Update arrows based on new offset
+    const data = await fetchUsers(offset, limit, debouncedQuery); // Wait for fetchUsers to complete
+    if (data) {
+      const totalUsers = data.total;
+      setUsers(data.users);
+      setTotal(totalUsers);
+      setPages(Math.ceil(totalUsers / limit));
+      setCurrentPage(offset / limit + 1);
+    }
   };
 
   const userSearch = (searchTerm: string) => {
@@ -66,14 +77,20 @@ const UserTableContainer = () => {
           <SearchBar onSearch={userSearch} />
           <UserActions />
         </div>
-        <UserTable users={users} />
-        <Pagination
-          update={updateUsers}
-          pages={pages}
-          currentpage={currentPage}
-          leftClick={leftClick}
-          rightClick={rightClick}
-        />
+        {users.length > 0 ? (
+          <>
+            <UserTable users={users} />
+            <Pagination
+              update={updateUsers}
+              pages={pages}
+              currentPage={currentPage}
+              leftClick={leftClick}
+              rightClick={rightClick}
+            />
+          </>
+        ) : (
+          <LoadingPage />
+        )}
       </div>
     </div>
   );
