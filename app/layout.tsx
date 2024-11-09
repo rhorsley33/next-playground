@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Header from './components/utility/Header';
-import { Poppins } from 'next/font/google';
+import { Lato } from 'next/font/google';
 import classNames from 'classnames';
 import './globals.css';
 import { GlobalProvider } from './context/GlobalContext';
 
-const poppins = Poppins({
-  weight: ['300', '400', '700', '900'],
+const lato = Lato({
+  weight: ['100', '300', '400', '700'],
   subsets: ['latin'],
 });
 
@@ -22,10 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${poppins.className}, bg-sky-50`}>
+      <body className={classNames(lato.className, 'bg-slate-900')}>
+        {/* <CustomCursor /> */}
         <GlobalProvider>
           <Header />
-          <main className='container'>{children}</main>
+          <main className='w-10/12 mx-auto'>{children}</main>
         </GlobalProvider>
       </body>
     </html>
