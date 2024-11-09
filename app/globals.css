@@ -285,43 +285,6 @@ ul.nav-items li:last-child a:hover {
 .skill-card {
   border: none !important;
 }
-/* .skill-card img {
-  width: 70%;
-}
-.react-card img {
-  width: fit-content;
-}
-
-.javascript-card img,
-.next-card img {
-  width: fit-content;
-}
-
-.node-card:hover,
-.aws-card:hover {
-  background: #572e57;
-  color: white;
-}
-.python-card {
-  max-height: 170px;
-}
-.python-card:hover {
-  background: #55f4f4;
-}
-
-.php-card:hover {
-  background: #fa5a96;
-} */
-*/
-
-/* .php-card img {
-  margin-left: 17%;
-}
-
-
-/* .typescript-card:hover {
-  background: #f3f356;
-} */
 
 .card .card-content {
   margin-top: 1rem;
