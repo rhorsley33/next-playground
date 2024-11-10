@@ -17,12 +17,101 @@ interface SkillsProps {
   category: string;
 }
 async function fetchSkills(): Promise<SkillsProps[]> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/skills`);
-  if (!response.ok) {
-    console.error("Fetch failed:", await response.text()); // Log the response text for debugging
-    throw new Error("Failed to fetch data");
+  // const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/skills`);
+  // if (!response.ok) {
+  //   console.error("Fetch failed:", await response.text()); // Log the response text for debugging
+  //   throw new Error("Failed to fetch data");
+  // }
+  // const coursesApiResponse = await response.json();
+  const coursesApiResponse = [{
+    id: 1,
+    name: 'React',
+    years_experience: 3,
+    img_url: '/images/react.png',
+    type: 'frontend',
+    category: 'primary',
+  },
+  {
+    id: 2,
+    name: 'Node.js',
+    years_experience: 3,
+    img_url: '/images/node.png',
+    type: 'backend',
+    category: 'primary',
+  },
+  {
+    id: 3,
+    name: 'Express.js',
+    years_experience: 3,
+    img_url: '/images/php.png',
+    type: 'backend',
+    category: 'primary',
+  },
+  {
+    id: 4,
+    name: 'MongoDB',
+    years_experience: 3,
+    img_url: '/images/node.png',
+    type: 'backend',
+    category: 'primary',
+  },
+  {
+    id: 5,
+    name: 'PostgreSQL',
+    years_experience: 3,
+    img_url: '/images/next.svg',
+    type: 'backend',
+    category: 'secondary',
+  },
+  {
+    id: 6,
+    name: 'Docker',
+    years_experience: 3,
+    img_url: '/images/docker.webp',
+    type: 'devops',
+    category: 'primary',
+  },
+  {
+    id: 7,
+    name: 'Kubernetes',
+    years_experience: 3,
+    img_url: '/images/css3.png',
+    type: 'devops',
+    category: 'secondary',
+  },
+  {
+    id: 8,
+    name: 'AWS',
+    years_experience: 3,
+    img_url: '/images/aws.webp',
+    type: 'devops',
+    category: 'primary',
+  },
+  {
+    id: 9,
+    name: 'GCP',
+    years_experience: 3,
+    img_url: '/images/cakephp.png',
+    type: 'devops',
+    category: 'secondary',
+  },
+  {
+    id: 10,
+    name: 'Azure',
+    years_experience: 3,
+    img_url: '/images/docker.webp',
+    type: 'devops',
+    category: 'secondary',
+  },
+  {
+    id: 11,
+    name: 'Jest',
+    years_experience: 3,
+    img_url: '/images/bootstrap.png',
+    type: 'testing',
+    category: 'primary',
   }
-  const coursesApiResponse = await response.json();
+  ];
   return coursesApiResponse;
 }
 

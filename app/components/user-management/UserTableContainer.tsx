@@ -8,7 +8,15 @@ import SearchBar from '../utility/SearchBar';
 import LoadingPage from '@/app/loading';
 
 const UserTableContainer = () => {
-  const [users, setUsers] = useState([]);
+  interface User {
+    id: number;
+    first_name: string;
+    last_name: string;
+    email: string;
+    age: number;
+  }
+
+  const [users, setUsers] = useState<User[]>([]);
   const [total, setTotal] = useState(0);
   const [pages, setPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,12 +35,20 @@ const UserTableContainer = () => {
 
   const fetchUsers = async (offset = 0, limit = 10, search = '') => {
     try {
-      const searchParam = search ? `&search=${search}` : '';
-      const queryString = `${process.env.NEXT_PUBLIC_BASE_URL}/api/users?limit=${limit}&offset=${offset}${searchParam}`;
-      const response = await fetch(queryString);
-      const data = await response.json();
+      // const searchParam = search ? `&search=${search}` : '';
+      // const queryString = `${process.env.NEXT_PUBLIC_BASE_URL}/api/users?limit=${limit}&offset=${offset}${searchParam}`;
+      // const response = await fetch(queryString);
+      // const data = await response.json();
 
       // Return the data so that it can be handled in the calling function
+      const data = {
+        total: 3,
+        users: [
+          { id: 1, first_name: 'John', last_name: 'Doe', email: 'jdoe@mail.com', age: 33 },
+          { id: 2, first_name: 'Jane', last_name: 'Smith', email: 'jsmith@mail.com', age: 29 },
+          { id: 3, first_name: 'Alice', last_name: 'Johnson', email: 'ajohnson@mail.com', age: 42 }
+        ]
+      };
       return data;
     } catch (error) {
       console.error('Error fetching users:', error);
