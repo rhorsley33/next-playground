@@ -25,7 +25,7 @@ const HomePage = () => {
             </li>
             <li>
               <strong>Work Ethic:</strong> Resilient and determined. Believe
-              strongly in the mantra "Work Hard, Play Hard". When it's time work
+              strongly in the mantra &quot;Work Hard, Play Hard&quot;. When it&apos;s time work
               I get to business and push until task is complete.
             </li>
             <li>
@@ -36,7 +36,7 @@ const HomePage = () => {
             <li>
               <strong>Life Outside of Work:</strong> Family-oriented and enjoy
               spending time with my wife and kids. Huge Disney fan, nature
-              lover, and an avid hiker with my dog. I've always got a stash of
+              lover, and an avid hiker with my dog. I&apos;ve always got a stash of
               granola for an afternoon adventure.
             </li>
             <li>

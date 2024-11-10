@@ -1,9 +1,9 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Button from '../utility/Button';
 import Modal from '../utility/Modal';
-import SearchBar from '../utility/SearchBar';
+
 const UserActions = () => {
   const [modalOpen, setModalOpen] = useState(false);
 

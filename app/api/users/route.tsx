@@ -10,7 +10,7 @@ export async function GET(request: Request) {
   const searchTerm = searchParams.get('search') || '';
 
   try {
-    let queryText = searchTerm
+    const queryText = searchTerm
       ? `WHERE first_name ILIKE $1 OR last_name ILIKE $1 OR email ILIKE $1`
       : '';
     console.log(offset);

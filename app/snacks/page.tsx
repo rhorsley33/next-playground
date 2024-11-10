@@ -7,7 +7,6 @@ const SnacksPage = () => {
   const [videos, setVideos] = useState([]);
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
-  const playlistId = 'PLtAD_PEdbrpN5Nd6B6f_vnckUJ_msDYB3';
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
     if (!accessToken) {

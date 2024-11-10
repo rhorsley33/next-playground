@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { FaStar, FaCodeBranch, FaEye } from 'react-icons/fa';
 interface RepoProps {
   name: string;

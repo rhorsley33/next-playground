@@ -4,8 +4,8 @@ import expenseStyles from '@/app/styles/expense-tracker.module.css';
 import { GlobalContext } from '@/app/context/GlobalContext';
 const IncomeExpense = () => {
   const { transactions } = useContext(GlobalContext);
-  let incomeItems: number[] = [];
-  let expenseItems: number[] = [];
+  const incomeItems: number[] = [];
+  const expenseItems: number[] = [];
 
   transactions.forEach((item) => {
     if (item.amount > 0) {

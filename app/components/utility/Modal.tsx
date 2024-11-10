@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import modalstyles from '../../styles/user-table.module.css';
 import ModalUserForm from '../user-management/ModalUserForm';
 import { FaWindowClose } from 'react-icons/fa';

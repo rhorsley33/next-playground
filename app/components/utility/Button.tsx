@@ -1,7 +1,5 @@
 'use client';
 
-import { on } from 'events';
-
 interface ButtonProps {
   title: string;
   onClick: () => void;

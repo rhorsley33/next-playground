@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext } from 'react';
+import React from 'react';
 import Header from '@/app/components/expense-tracker/Header';
 import Balance from '@/app/components/expense-tracker/Balance';
 import IncomeExpense from '@/app/components/expense-tracker/IncomeExpense';

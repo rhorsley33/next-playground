@@ -15,7 +15,7 @@ const ModalUserForm: React.FC<ModalUserFormProps> = ({ handleSubmission }) => {
     password: '',
   });
   const togglePassword = () => {
-    setShowPassword((prev) => !showPassword);
+    setShowPassword(() => !showPassword);
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
