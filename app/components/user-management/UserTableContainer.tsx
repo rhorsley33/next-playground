@@ -35,20 +35,10 @@ const UserTableContainer = () => {
 
   const fetchUsers = async (offset = 0, limit = 10, search = '') => {
     try {
-      // const searchParam = search ? `&search=${search}` : '';
-      // const queryString = `${process.env.NEXT_PUBLIC_BASE_URL}/api/users?limit=${limit}&offset=${offset}${searchParam}`;
-      // const response = await fetch(queryString);
-      // const data = await response.json();
-
-      // Return the data so that it can be handled in the calling function
-      const data = {
-        total: 3,
-        users: [
-          { id: 1, first_name: 'John', last_name: 'Doe', email: 'jdoe@mail.com', age: 33 },
-          { id: 2, first_name: 'Jane', last_name: 'Smith', email: 'jsmith@mail.com', age: 29 },
-          { id: 3, first_name: 'Alice', last_name: 'Johnson', email: 'ajohnson@mail.com', age: 42 }
-        ]
-      };
+      const searchParam = search ? `&search=${search}` : '';
+      const queryString = `${process.env.NEXT_PUBLIC_BASE_URL}/api/users?limit=${limit}&offset=${offset}${searchParam}`;
+      const response = await fetch(queryString);
+      const data = await response.json();
       return data;
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -63,7 +53,7 @@ const UserTableContainer = () => {
         setUsers(data.users);
         setTotal(totalUsers);
         setPages(Math.ceil(totalUsers / limit));
-        setCurrentPage(1); // Assuming you're loading the first page
+        setCurrentPage(1);
       }
     };
 
