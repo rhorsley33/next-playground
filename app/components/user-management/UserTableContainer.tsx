@@ -83,7 +83,7 @@ const UserTableContainer = () => {
             <Pagination
               update={updateUsers}
               pages={pages}
-              currentPage={currentPage}
+              currentpage={currentPage}
               leftClick={leftClick}
               rightClick={rightClick}
             />

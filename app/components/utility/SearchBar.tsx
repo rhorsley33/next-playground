@@ -1,6 +1,10 @@
 import React from 'react';
 
-const SearchBar = ({ onSearch }) => {
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   return (
     <div className='w-3/4'>
       <input

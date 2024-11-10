@@ -4,7 +4,13 @@ import expenseStyles from '@/app/styles/expense-tracker.module.css';
 import { GlobalContext } from '@/app/context/GlobalContext';
 
 const Balance = () => {
-  const { transactions } = useContext(GlobalContext);
+  const context = useContext(GlobalContext);
+
+  if (!context) {
+    throw new Error('Balance component must be used within a GlobalProvider');
+  }
+
+  const { transactions } = context;
 
   const total = transactions.map((transaction) => {
     return transaction.amount;

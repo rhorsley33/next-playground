@@ -2,11 +2,21 @@
 import React, { useState } from 'react';
 import validator from 'validator';
 import { FaEye } from 'react-icons/fa';
+
 interface ModalUserFormProps {
   handleSubmission: () => void;
 }
+
+interface FormData {
+  first_name: string;
+  last_name: string;
+  email: string;
+  age: string;
+  password: string;
+}
 const ModalUserForm: React.FC<ModalUserFormProps> = ({ handleSubmission }) => {
   const [showPassword, setShowPassword] = useState(false);
+  
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -14,12 +24,14 @@ const ModalUserForm: React.FC<ModalUserFormProps> = ({ handleSubmission }) => {
     age: '',
     password: '',
   });
+  
   const togglePassword = () => {
     setShowPassword(() => !showPassword);
   };
-  const handleChange = (e) => {
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setFormData((prevData: FormData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -67,11 +79,15 @@ const ModalUserForm: React.FC<ModalUserFormProps> = ({ handleSubmission }) => {
         password: '',
       });
     } catch (error) {
-      console.error('Failed to add user:', error.message);
+      if (error instanceof Error) {
+        console.error('Failed to add user:', error.message);
+      } else {
+        console.error('Failed to add user:', error);
+      }
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const createUser = await addUserData();
     console.log('User created:', createUser);

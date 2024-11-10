@@ -5,7 +5,7 @@ import Transaction from './Transaction';
 import { GlobalContext } from '@/app/context/GlobalContext';
 
 const TransactionList = () => {
-  const { transactions } = useContext(GlobalContext);
+  const { transactions } = useContext(GlobalContext) || { transactions: [] };
   return (
     <>
       <h3>History</h3>

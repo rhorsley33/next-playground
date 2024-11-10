@@ -1,25 +1,27 @@
 'use client';
 import React, { useContext, useState } from 'react';
 import expenseStyles from '@/app/styles/expense-tracker.module.css';
-import { GlobalContext } from '@/app/context/GlobalContext';
+import { GlobalContext, GlobalContextType } from '@/app/context/GlobalContext';
+
 const AddTransactionForm = () => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
-  const { addTransaction } = useContext(GlobalContext);
+  const { addTransaction } = useContext(GlobalContext) as GlobalContextType;
+
 
   const resetForm = () => {
     setTitle('');
     setAmount(0);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newTransaction = {
       id: Math.floor(Math.random() * 10000000),
       title,
       amount: +amount,
     };
-    addTransaction(newTransaction);
+    addTransaction({ transaction: newTransaction });
     resetForm();
   };
 

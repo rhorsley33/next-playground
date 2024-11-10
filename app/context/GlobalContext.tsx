@@ -1,6 +1,13 @@
 'use client';
 import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
+
+export type GlobalContextType = {
+  transactions: { id: number; title: string; amount: number }[];
+  addTransaction: (transaction: TransactionProps) => void;
+  deleteTransaction: (id: number) => void;
+};
+
 interface TransactionProps {
   transaction: {
     id: number;
@@ -40,7 +47,7 @@ const initialState = {
   ],
 };
 
-export const GlobalContext = createContext(initialState);
+export const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
 import { ReactNode } from 'react';
 

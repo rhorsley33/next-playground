@@ -23,7 +23,6 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={classNames(lato.className, 'bg-slate-900')}>
-        {/* <CustomCursor /> */}
         <GlobalProvider>
           <Header />
           <main className='w-10/12 mx-auto'>{children}</main>

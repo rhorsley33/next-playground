@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useContext } from 'react';
 import expenseStyles from '@/app/styles/expense-tracker.module.css';
-import { GlobalContext } from '@/app/context/GlobalContext';
+import { GlobalContext, GlobalContextType } from '@/app/context/GlobalContext';
 import classNames from 'classnames';
 interface TransactionProps {
   transaction: {
@@ -13,7 +13,7 @@ interface TransactionProps {
 const Transaction = ({ transaction }: TransactionProps) => {
   const [hovered, setHovered] = useState(false);
   const sign = transaction.amount < 0 ? '-' : '+';
-  const { deleteTransaction } = useContext(GlobalContext);
+  const { deleteTransaction } =  useContext(GlobalContext) as GlobalContextType;
   return (
     <li
       className={classNames({
