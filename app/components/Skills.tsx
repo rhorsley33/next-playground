@@ -18,12 +18,22 @@ interface SkillsProps {
 }
 async function fetchSkills(): Promise<SkillsProps[]> {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/skills`);
+  if (!response.ok) {
+    console.error("Fetch failed:", await response.text()); // Log the response text for debugging
+    throw new Error("Failed to fetch data");
+  }
   const coursesApiResponse = await response.json();
   return coursesApiResponse;
 }
 
 const Skills = async () => {
-  const skills = await fetchSkills();
+  let skills;
+  try {
+    skills = await fetchSkills();
+  } catch (error) {
+    console.error("Error parsing JSON:", error);
+    throw new Error("Invalid JSON response");
+  }
   const primarySkills = skills.filter((skill) => skill.category === 'primary');
   const secondarySkills = skills.filter(
     (skill) => skill.category === 'secondary'
