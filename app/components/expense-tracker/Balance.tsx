@@ -1,6 +1,5 @@
 'use client';
 import React, { useContext } from 'react';
-import classNames from 'classnames';
 import expenseStyles from '@/app/styles/expense-tracker.module.css';
 import { GlobalContext } from '@/app/context/GlobalContext';
 
