@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     throw new Error('YOUTUBE_CLIENT_ID is not defined');
   }
 
-  const redirectUri = 'http://localhost:3000/callback';
+  const redirectUri = `${process.env.NEXT_PUBLIC_BASE_URL}/callback`;
 
   const response = await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',

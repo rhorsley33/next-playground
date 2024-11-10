@@ -17,7 +17,7 @@ interface SkillsProps {
   category: string;
 }
 async function fetchSkills(): Promise<SkillsProps[]> {
-  const response = await fetch('http://localhost:3000/api/skills');
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/skills`);
   const coursesApiResponse = await response.json();
   return coursesApiResponse;
 }
