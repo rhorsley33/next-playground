@@ -16,7 +16,6 @@ const SnacksPage = () => {
       const videoResponse = async (term: string | null) => {
         const response = await fetch(`/api/videos?query=${term}`);
         const data = await response.json();
-        console.log(`Video response: ${data}`);
         if (response.ok && data.items) {
           setVideos(data.items || []);
           setAuthorized(true);

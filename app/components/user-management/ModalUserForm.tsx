@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import validator from 'validator';
 import { FaEye } from 'react-icons/fa';
+import { toast } from 'react-hot-toast';
 
 interface ModalUserFormProps {
   handleSubmission: () => void;
@@ -16,7 +17,7 @@ interface FormData {
 }
 const ModalUserForm: React.FC<ModalUserFormProps> = ({ handleSubmission }) => {
   const [showPassword, setShowPassword] = useState(false);
-  
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -24,7 +25,7 @@ const ModalUserForm: React.FC<ModalUserFormProps> = ({ handleSubmission }) => {
     age: '',
     password: '',
   });
-  
+
   const togglePassword = () => {
     setShowPassword(() => !showPassword);
   };
@@ -78,6 +79,7 @@ const ModalUserForm: React.FC<ModalUserFormProps> = ({ handleSubmission }) => {
         age: '',
         password: '',
       });
+      return response;
     } catch (error) {
       if (error instanceof Error) {
         console.error('Failed to add user:', error.message);
@@ -90,7 +92,13 @@ const ModalUserForm: React.FC<ModalUserFormProps> = ({ handleSubmission }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const createUser = await addUserData();
-    console.log('User created:', createUser);
+    if (createUser?.ok) {
+      toast.success('Balla Shot Calla!  Way to go on adding a new user!');
+    } else {
+      toast.error(
+        'Whoops you did it again! Dont double dip the chip!  Try again'
+      );
+    }
   };
 
   return (

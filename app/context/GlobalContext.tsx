@@ -21,33 +21,15 @@ const initialState = {
   transactions: [
     {
       id: 1,
-      title: 'Pho',
-      amount: -20,
-    },
-    {
-      id: 2,
-      title: 'Income',
-      amount: 800,
-    },
-    {
-      id: 3,
-      title: 'Movies',
-      amount: -25,
-    },
-    {
-      id: 4,
-      title: 'Phone',
-      amount: -100,
-    },
-    {
-      id: 5,
-      title: 'Hustle',
-      amount: 200,
+      title: 'Payday',
+      amount: 1000,
     },
   ],
 };
 
-export const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
+export const GlobalContext = createContext<GlobalContextType | undefined>(
+  undefined
+);
 
 import { ReactNode } from 'react';
 
@@ -62,9 +44,10 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   }
 
   function addTransaction(transaction: TransactionProps) {
+    const newTransaction = transaction.transaction;
     dispatch({
       type: 'ADD_TRANSACTION',
-      payload: transaction,
+      payload: newTransaction,
     });
   }
 

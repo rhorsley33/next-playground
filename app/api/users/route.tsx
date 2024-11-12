@@ -4,16 +4,13 @@ import { supabase } from '../../../lib/supabaseClient'; // Import the supabase c
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  console.log(searchParams);
   const limit = parseInt(searchParams.get('limit') || '10');
   const offset = parseInt(searchParams.get('offset') || '0');
   const searchTerm = searchParams.get('search') || '';
-
   try {
     const queryText = searchTerm
       ? `WHERE first_name ILIKE $1 OR last_name ILIKE $1 OR email ILIKE $1`
       : '';
-    console.log(offset);
     const users = await query('users', queryText, [searchTerm, offset, limit]);
     const { data: totalUsersResult, error: countError } = await supabase
       .from('users')
@@ -32,4 +29,19 @@ export async function GET(request: Request) {
       { status: 500 }
     );
   }
+}
+
+export async function POST(request: Request) {
+  const { first_name, last_name, email, password, age } = await request.json();
+
+  const { data, error } = await supabase
+    .from('users')
+    .insert([{ first_name, last_name, email, password, age }])
+    .select('*');
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json(data);
 }

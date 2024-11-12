@@ -8,7 +8,6 @@ const AddTransactionForm = () => {
   const [amount, setAmount] = useState(0);
   const { addTransaction } = useContext(GlobalContext) as GlobalContextType;
 
-
   const resetForm = () => {
     setTitle('');
     setAmount(0);
@@ -21,6 +20,7 @@ const AddTransactionForm = () => {
       title,
       amount: +amount,
     };
+
     addTransaction({ transaction: newTransaction });
     resetForm();
   };
@@ -44,8 +44,7 @@ const AddTransactionForm = () => {
         </div>
         <div className={expenseStyles['form-control']}>
           <label className={expenseStyles['expense-label']} htmlFor='amount'>
-            Amount <br />
-            (negative - expense, positive - income)
+            Amount (negative - expense, positive - income)
           </label>
           <input
             type='number'

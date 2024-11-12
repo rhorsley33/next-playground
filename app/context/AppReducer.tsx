@@ -5,7 +5,7 @@ interface Transaction {
   amount: number;
 }
 
-export default (state : any, action: any) => {
+export default (state: any, action: any) => {
   switch (action.type) {
     case 'DELETE_TRANSACTION':
       return {

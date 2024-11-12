@@ -16,7 +16,9 @@
 .income-expense-wrapper {
   background-color: #fff;
   box-shadow: var(--box-shadow);
-  padding: 20px;
+  border-top: 1px solid #0f172b;
+  border-bottom: 1px solid #0f172b;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
@@ -39,7 +41,7 @@
 }
 
 .income-expense-wrapper > div:first-of-type {
-  border-right: 1px solid #dedede;
+  border-right: 1px solid #0f172b;
 }
 
 .money {
@@ -58,7 +60,8 @@
 
 .expense-label {
   display: inline-block;
-  margin: 10px 0;
+  font-size: 1rem;
+  margin: 10px 0 0 1rem;
 }
 
 .transaction-input {
@@ -72,13 +75,13 @@
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
+  background-color: #cbd5e1;
   box-shadow: var(--box-shadow);
-  color: #fff;
+  color: #0f172a;
   border: 0;
   display: block;
   font-size: 16px;
-  margin: 10px 0 30px;
+  margin: 20px 0 0;
   padding: 10px;
   width: 100%;
 }
@@ -91,7 +94,7 @@
 .list {
   list-style-type: none;
   padding: 0;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   width: 100%;
 }
 

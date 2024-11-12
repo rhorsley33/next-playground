@@ -61,14 +61,14 @@ const UserTableContainer = () => {
   }, [debouncedQuery]);
 
   const updateUsers = async (offset: number, limit: number) => {
-    updateArrows(offset); // Update arrows based on new offset
+    updateArrows(offset);
     const data = await fetchUsers(offset, limit, debouncedQuery); // Wait for fetchUsers to complete
     if (data) {
       const totalUsers = data.total;
       setUsers(data.users);
       setTotal(totalUsers);
       setPages(Math.ceil(totalUsers / limit));
-      setCurrentPage(offset / limit + 1);
+      setCurrentPage(Math.floor(offset / limit + 1));
     }
   };
 
@@ -77,7 +77,7 @@ const UserTableContainer = () => {
   };
 
   return (
-    <div className='container mx-auto'>
+    <div className='container sm:px-4 px-0 py-0 mx-auto'>
       <div className='my-8'>
         <div className='flex justify-between'>
           <SearchBar onSearch={userSearch} />

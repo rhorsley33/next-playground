@@ -23,8 +23,11 @@ const Balance = () => {
 
   return (
     <div className={expenseStyles.container}>
-      <h2 className={expenseStyles.headerTwo}>Your Balance</h2>
-      <h4 className={expenseStyles.headerFour} id='balance'>{`$ ${amount}`}</h4>
+      <h2 className='text-xl text-slate-900 ml-4'>Your Balance</h2>
+      <h4
+        className='text-lg font-bold text-slate-900 ml-4'
+        id='balance'
+      >{`$ ${amount}`}</h4>
     </div>
   );
 };

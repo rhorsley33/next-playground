@@ -15,15 +15,16 @@ const Pagination = ({
   rightClick,
 }: PaginationProps) => {
   const pageNumbers: number[] = Array.from({ length: pages }, (_, i) => i + 1);
+  console.log(currentpage);
 
   return (
     <div className='text-slate-900 flex justify-center items-center space-x-4 mt-4'>
       <Link
         href='#'
-        onClick={() => update(leftClick, 10)}
+        onClick={() => update(leftClick, 9)}
         className='px-2 text-lg text-slate-700 hover:text-slate-900'
       >
-        <FaChevronCircleLeft />
+        <FaChevronCircleLeft color={'#e2e8f0'} />
       </Link>
       {pageNumbers.map((number: number) => (
         <Link
@@ -32,14 +33,14 @@ const Pagination = ({
           style={
             currentpage === number
               ? {
-                  backgroundColor: '#0f172a',
-                  color: '#fff',
+                  backgroundColor: '#f3f356',
+                  color: '#0f172b',
                   pointerEvents: 'none',
                 }
               : {}
           }
           data-page={number}
-          onClick={() => update((number - 1) * 10, 10)}
+          onClick={() => update((number - 1) * 10, 9)}
           className='px-3 py-1 mx-1 rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-slate-900'
         >
           {number}
@@ -47,10 +48,10 @@ const Pagination = ({
       ))}
       <Link
         href='#'
-        onClick={() => update(rightClick, 10)}
+        onClick={() => update(rightClick, 9)}
         className='px-2 text-lg text-slate-700 hover:text-slate-900'
       >
-        <FaChevronCircleRight />
+        <FaChevronCircleRight color={'#e2e8f0'} />
       </Link>
     </div>
   );

@@ -8,7 +8,6 @@ const UserActions = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const toggleModal = () => {
-    console.log('Add User button clicked');
     setModalOpen((prev) => !prev);
   };
 

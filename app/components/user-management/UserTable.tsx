@@ -13,18 +13,18 @@ const UserTable = ({ users }: UserDataProps) => {
   return (
     <>
       <table className='table-auto w-full text-sm divide-y divide-gray-200 mx-auto overflow-scroll'>
-        <thead className={`${styles['table-header']} bg-slate-900`}>
+        <thead className='bg-slate-300 text-slate-900'>
           <tr>
-            <th className='border-b dark:border-slate-600 font-medium pl-8 text-slate-100 dark:text-slate-900 text-left'>
+            <th className='border-b dark:border-slate-600 font-medium pl-8 text-left'>
               First Name
             </th>
-            <th className='border-b dark:border-slate-600 font-medium pl-8 text-slate-100 dark:text-slate-900 text-left'>
+            <th className='border-b dark:border-slate-600 font-medium pl-8 text-left'>
               Last Name
             </th>
-            <th className='border-b dark:border-slate-600 font-medium p-4 text-slate-100 dark:text-slate-900 text-left'>
+            <th className='border-b dark:border-slate-600 font-medium p-4 text-left'>
               Email
             </th>
-            <th className='border-b dark:border-slate-600 font-medium p-4 text-slate-100 dark:text-slate-900 text-left'>
+            <th className='border-b dark:border-slate-600 font-medium p-4 text-left'>
               Age
             </th>
           </tr>
