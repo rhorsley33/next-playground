@@ -15,7 +15,7 @@ const Header = () => {
           width={200}
           height={200}
           alt='roho logo'
-          className='mx-auto relative left-8'
+          className='mx-auto relative left-3'
         />
       </div>
       <MobileMenu />
