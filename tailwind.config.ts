@@ -13,6 +13,9 @@ const config: Config = {
         foreground: 'var(--foreground)',
         customblue: '#b6c1d1',
       },
+      rotate: {
+        y180: '180deg',
+      },
     },
   },
   plugins: [],

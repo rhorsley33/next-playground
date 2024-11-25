@@ -1,0 +1,18 @@
+.backFacing {
+    transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    transition: transform 2.5s ease-in-out; /* Adjust duration and easing here */
+    -webkit-transition: -webkit-transform 0.6s ease-in-out;
+    -moz-transition: -moz-transform 0.6s ease-in-out;
+    -o-transition: -o-transform 0.6s ease-in-out;
+    visibility: visible
+}
+.frontFacing {
+    z-index: 101;
+}
+.hiddenCard {
+    z-index: 100;
+    display: none;
+}
